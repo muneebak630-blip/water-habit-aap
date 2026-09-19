@@ -3,77 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Water Habit 🌱💧</title>
+<meta name="theme-color" content="#bde9ff">
+<title>HydroGarden 💧🌱</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#e8f8ff,#f4fff1);color:#17324d;min-height:100vh}
-.app{max-width:520px;margin:auto;padding:28px 18px 40px}.card{background:#fff;border-radius:24px;padding:24px;margin-top:18px;box-shadow:0 10px 30px rgba(30,90,120,.12)}
-h1{text-align:center;margin:5px 0 6px;font-size:32px}.subtitle{text-align:center;color:#668096;margin:0 0 18px}
-.plant{font-size:100px;text-align:center;line-height:1.1}.progress-wrap{height:22px;background:#e8eef2;border-radius:20px;overflow:hidden;margin:15px 0}.progress{height:100%;width:0;background:#43b7e8;border-radius:20px;transition:.4s}
-.amount{text-align:center;font-size:25px;font-weight:bold}.goal{text-align:center;color:#718595;margin-top:5px}
-.buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.buttons button,.custom button,.goal-select{border:0;border-radius:14px;padding:14px;font-size:16px;font-weight:bold;cursor:pointer;background:#e4f7ff;color:#1676a5}
-.custom{display:flex;gap:10px;margin-top:12px}.custom input{flex:1;padding:13px;border:2px solid #e3ebf0;border-radius:14px;font-size:16px}
-.goal-row{display:flex;gap:10px;margin-top:15px;align-items:center}.goal-row label{font-size:14px;color:#718595}.goal-select{padding:10px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat{text-align:center;background:#f7fbfd;border-radius:16px;padding:15px}.stat strong{display:block;font-size:24px}
-.message{text-align:center;margin-top:14px;font-weight:bold;color:#2b829e}.history{margin-top:18px}.history h3{margin:0 0 10px}.day{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #edf1f3;font-size:14px}
-.reset{display:block;margin:18px auto 0;border:0;background:none;color:#8a9aa6;cursor:pointer}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:linear-gradient(160deg,#dff7ff,#efffe9 55%,#fff8dc);color:#183b4d;min-height:100vh}.app{max-width:560px;margin:auto;padding:22px 16px 45px}.top{text-align:center}.brand{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#4286a3;font-weight:800}.top h1{font-size:34px;margin:5px 0}.subtitle{color:#668392;margin:0}.card{background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.8);border-radius:28px;padding:22px;margin-top:16px;box-shadow:0 12px 35px rgba(45,105,120,.12)}.garden{height:230px;border-radius:22px;background:linear-gradient(#bcecff 0 62%,#c9efb5 62%);position:relative;overflow:hidden;text-align:center}.sun{position:absolute;right:18px;top:15px;font-size:35px}.cloud{position:absolute;left:16px;top:25px;font-size:30px}.ground{position:absolute;bottom:0;left:0;right:0;height:45px;background:#9ed681}.plant{position:absolute;bottom:25px;left:0;right:0;font-size:105px;line-height:1;filter:drop-shadow(0 5px 3px rgba(0,0,0,.08));transition:.3s}.garden-name{position:absolute;bottom:8px;left:0;right:0;font-size:13px;font-weight:800;color:#326348}.progress-wrap{height:18px;background:#e6eef1;border-radius:20px;overflow:hidden;margin:17px 0 10px}.progress{height:100%;width:0;background:linear-gradient(90deg,#55c8ed,#75d69b);transition:.4s}.amount{text-align:center;font-size:27px;font-weight:900}.goal{text-align:center;color:#718895;font-size:14px;margin-top:3px}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:17px}.btn,.custom button,.goal-select{border:0;border-radius:15px;padding:14px;font-size:16px;font-weight:800;cursor:pointer;background:#e2f6ff;color:#16749c}.btn:active,.custom button:active{transform:scale(.98)}.custom{display:flex;gap:9px;margin-top:10px}.custom input{flex:1;padding:13px;border:2px solid #e2ebef;border-radius:15px;font-size:16px}.goal-row{display:flex;gap:9px;align-items:center;margin-top:14px}.goal-row label{font-size:13px;color:#718895}.goal-select{padding:10px}.message{text-align:center;margin-top:14px;font-weight:800;color:#32809d}.mission{background:#f5fbf6;border-radius:18px;padding:14px;margin-top:12px}.mission strong{display:block;margin-bottom:8px}.mission-row{display:flex;justify-content:space-between;padding:7px 0;font-size:14px;border-bottom:1px solid #e3eee6}.mission-row:last-child{border:0}.badge-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.badge{padding:8px 10px;border-radius:999px;background:#f0f7e9;font-size:13px;font-weight:800}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{text-align:center;background:#f7fbfd;border-radius:17px;padding:13px 5px}.stat strong{display:block;font-size:23px}.small{font-size:12px;color:#718895}.history{margin-top:17px}.history h3{margin:0 0 9px}.day{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #edf1f3;font-size:14px}.reset{display:block;margin:16px auto 0;border:0;background:none;color:#82949e;cursor:pointer}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%) translateY(20px);background:#173d4e;color:white;padding:12px 17px;border-radius:999px;font-weight:800;opacity:0;pointer-events:none;transition:.25s;box-shadow:0 8px 25px rgba(0,0,0,.18)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 <body>
 <div class="app">
-<h1>Water Habit 🌱💧</h1>
-<p class="subtitle">Grow your plant by drinking water.</p>
+<header class="top"><div class="brand">💧 HydroGarden</div><h1>Grow Your Hydration 🌱</h1><p class="subtitle">Every glass of water helps your little garden grow.</p></header>
+
 <div class="card">
-<div class="plant" id="plant">🌱</div>
+<div class="garden"><div class="sun">☀️</div><div class="cloud">☁️</div><div class="ground"></div><div class="plant" id="plant">🌱</div><div class="garden-name" id="gardenName">Tiny Seedling</div></div>
 <div class="progress-wrap"><div class="progress" id="progress"></div></div>
-<div class="amount" id="amount">0 mL</div>
-<div class="goal">Daily goal: <span id="goalText">2000</span> mL</div>
-<div class="buttons"><button onclick="addWater(250)">+ 250 mL</button><button onclick="addWater(500)">+ 500 mL</button></div>
-<div class="custom"><input id="customAmount" type="number" min="1" placeholder="Custom mL"><button onclick="addCustom()">Add</button></div>
-<div class="goal-row"><label for="goalSelect">Change goal:</label><select id="goalSelect" class="goal-select" onchange="changeGoal(this.value)"><option value="1500">1500 mL</option><option value="2000">2000 mL</option><option value="2500">2500 mL</option><option value="3000">3000 mL</option></select></div>
-<div class="message" id="message">Start your day with a glass of water!</div>
+<div class="amount" id="amount">0 mL</div><div class="goal">Today's garden goal: <span id="goalText">2000</span> mL</div>
+<div class="buttons"><button class="btn" onclick="addWater(250)">💧 +250 mL</button><button class="btn" onclick="addWater(500)">💦 +500 mL</button></div>
+<div class="custom"><input id="customAmount" type="number" min="1" placeholder="Enter custom mL"><button onclick="addCustom()">Add</button></div>
+<div class="goal-row"><label>Daily goal</label><select id="goalSelect" class="goal-select" onchange="changeGoal(this.value)"><option value="1500">1500 mL</option><option value="2000">2000 mL</option><option value="2500">2500 mL</option><option value="3000">3000 mL</option></select></div>
+<div class="message" id="message">Give your seed its first drink! 🌱</div>
 </div>
+
 <div class="card">
-<h3>🔔 Water reminders</h3>
-<p style="color:#718595">Get a reminder while the app is open.</p>
-<div class="goal-row">
-<label for="reminderSelect">Every:</label>
-<select id="reminderSelect" class="goal-select" onchange="setReminder(this.value)">
-<option value="0">Off</option><option value="30">30 minutes</option><option value="60">1 hour</option><option value="120">2 hours</option>
-</select>
+<div class="mission"><strong>🎯 Today's mini-missions</strong>
+<div class="mission-row"><span id="m1">⬜ Drink your first 250 mL</span><span>+💧</span></div>
+<div class="mission-row"><span id="m2">⬜ Reach 50% of your goal</span><span>+💧</span></div>
+<div class="mission-row"><span id="m3">⬜ Complete today's goal</span><span>+⭐</span></div>
 </div>
-<button class="reset" onclick="requestNotifications()">Enable notifications</button>
+<div class="badge-row" id="badges"></div>
+</div>
+
+<div class="card">
+<h3>🔔 Gentle reminders</h3><div class="small">Reminders appear while this page is open.</div>
+<div class="goal-row"><label>Every</label><select id="reminderSelect" class="goal-select" onchange="setReminder(this.value)"><option value="0">Off</option><option value="30">30 minutes</option><option value="60">1 hour</option><option value="120">2 hours</option></select><button class="btn" style="padding:10px 12px" onclick="requestNotifications()">Enable</button></div>
 <div class="message" id="reminderStatus"></div>
-</div>\n<div class="card">
-<div class="stats"><div class="stat"><strong id="percent">0%</strong>Goal reached</div><div class="stat"><strong id="streak">0</strong>Day streak</div></div>
-<div class="history"><h3>Recent days</h3><div id="history"></div></div>
+</div>
+
+<div class="card">
+<div class="stats"><div class="stat"><strong id="percent">0%</strong><span class="small">Goal</span></div><div class="stat"><strong id="streak">0</strong><span class="small">Day streak</span></div><div class="stat"><strong id="drops">0</strong><span class="small">Drops</span></div></div>
+<div class="history"><h3>📅 Recent garden days</h3><div id="history"></div></div>
 <button class="reset" onclick="resetToday()">Reset today's water</button>
 </div>
 </div>
+<div class="toast" id="toast"></div>
+
 <script>
-const key='waterHabitData', goalKey='waterHabitGoal';
-let goal=Number(localStorage.getItem(goalKey)||2000);
-let data=JSON.parse(localStorage.getItem(key)||'{"date":"","amount":0,"streak":0,"history":[]}');
-if(!Array.isArray(data.history))data.history=[];
-function today(){return new Date().toISOString().slice(0,10)}
-function save(){localStorage.setItem(key,JSON.stringify(data));localStorage.setItem(goalKey,String(goal))}
-function ensureToday(){if(data.date!==today()){if(data.date&&data.amount>0){data.history.unshift({date:data.date,amount:data.amount});data.history=data.history.slice(0,7)}data={date:today(),amount:0,streak:data.streak||0,history:data.history};save()}}
-ensureToday();
-function addWater(ml){if(!Number.isFinite(ml)||ml<=0)return;const wasComplete=data.amount>=goal;data.amount+=ml;if(!wasComplete&&data.amount>=goal)data.streak+=1;save();render()}
+const key='waterHabitData',goalKey='waterHabitGoal';let goal=Number(localStorage.getItem(goalKey)||2000);
+let data=JSON.parse(localStorage.getItem(key)||'{"date":"","amount":0,"streak":0,"history":[]}');if(!Array.isArray(data.history))data.history=[];
+function today(){return new Date().toISOString().slice(0,10)}function save(){localStorage.setItem(key,JSON.stringify(data));localStorage.setItem(goalKey,String(goal))}
+function ensureToday(){if(data.date!==today()){if(data.date&&data.amount>0){data.history.unshift({date:data.date,amount:data.amount});data.history=data.history.slice(0,7)}data={date:today(),amount:0,streak:data.streak||0,history:data.history};save()}}ensureToday();
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2200)}
+function addWater(ml){if(!Number.isFinite(ml)||ml<=0)return;const wasComplete=data.amount>=goal;data.amount+=ml;if(!wasComplete&&data.amount>=goal){data.streak+=1;toast('🌸 Your garden is fully grown today!')}else toast('💧 Your plant got a drink!');save();render()}
 function addCustom(){const v=Number(document.getElementById('customAmount').value);addWater(v);document.getElementById('customAmount').value=''}
-function changeGoal(v){goal=Number(v);save();render()}
-function resetToday(){data.amount=0;save();render()}
+function changeGoal(v){goal=Number(v);save();render();toast('🎯 New garden goal set!')}
+function resetToday(){data.amount=0;save();render();toast('Today was reset. Your seed is ready again!')}
 function render(){
 document.getElementById('goalText').textContent=goal.toLocaleString();document.getElementById('goalSelect').value=String(goal);
-const p=Math.min(100,data.amount/goal*100);document.getElementById('progress').style.width=p+'%';document.getElementById('amount').textContent=data.amount.toLocaleString()+' mL';document.getElementById('percent').textContent=Math.round(p)+'%';document.getElementById('streak').textContent=data.streak;
-document.getElementById('plant').textContent=p<25?'🌱':p<50?'🌿':p<75?'🪴':p<100?'🌳':'🌸';
-document.getElementById('message').textContent=p>=100?'Daily goal complete! Your plant is thriving! 🌸':p>=75?'Almost there! Keep drinking. 🌳':p>=50?'Great progress! Your plant is growing. 🪴':'Keep going—your plant needs water! 🌱';
-const h=document.getElementById('history');h.innerHTML=data.history.length?data.history.map(x=>'<div class="day"><span>'+x.date+'</span><strong>'+x.amount.toLocaleString()+' mL</strong></div>').join(''):'<div class="day"><span>No previous days yet</span><span>💧</span></div>';
+const p=Math.min(100,data.amount/goal*100);document.getElementById('progress').style.width=p+'%';document.getElementById('amount').textContent=data.amount.toLocaleString()+' mL';document.getElementById('percent').textContent=Math.round(p)+'%';document.getElementById('streak').textContent=data.streak;document.getElementById('drops').textContent=Math.floor(data.amount/250);
+let plant=p<25?'🌱':p<50?'🌿':p<75?'🪴':p<100?'🌳':'🌸';document.getElementById('plant').textContent=plant;
+document.getElementById('gardenName').textContent=p<25?'Tiny Seedling':p<50?'Happy Sprout':p<75?'Growing Plant':p<100?'Young Tree':'Flowering Garden';
+document.getElementById('message').textContent=p>=100?'Goal complete! Your garden is thriving. 🌸':p>=75?'Almost a full garden—keep going! 🌳':p>=50?'Your plant is growing beautifully! 🪴':'Your little seed is thirsty. 🌱';
+document.getElementById('m1').textContent=(data.amount>=250?'✅':'⬜')+' Drink your first 250 mL';document.getElementById('m2').textContent=(data.amount>=goal*.5?'✅':'⬜')+' Reach 50% of your goal';document.getElementById('m3').textContent=(data.amount>=goal?'✅':'⬜')+' Complete today\'s goal';
+let b=[];if(data.amount>=250)b.push('💧 First Drop');if(data.amount>=goal)b.push('🌸 Garden Grown');if(data.streak>=3)b.push('🌿 3-Day Gardener');if(data.streak>=7)b.push('🏆 7-Day Gardener');if(data.streak>=30)b.push('👑 30-Day Master');document.getElementById('badges').innerHTML=b.length?b.map(x=>'<span class="badge">'+x+'</span>').join(''):'<span class="small">Complete goals to unlock badges ✨</span>';
+const h=document.getElementById('history');h.innerHTML=data.history.length?data.history.map(x=>'<div class="day"><span>'+x.date+'</span><strong>'+x.amount.toLocaleString()+' mL</strong></div>').join(''):'<div class="day"><span>No previous garden days yet</span><span>🌱</span></div>';
 }
-function requestNotifications(){if(!("Notification" in window)){document.getElementById('reminderStatus').textContent='Notifications are not supported here.';return}Notification.requestPermission().then(p=>{document.getElementById('reminderStatus').textContent=p==='granted'?'Notifications enabled! 💧':'Please allow notifications in your browser.'})}
-let reminderTimer=null;
-function setReminder(minutes){clearInterval(reminderTimer);localStorage.setItem('waterReminder',minutes);if(Number(minutes)>0){reminderTimer=setInterval(()=>{if("Notification" in window&&Notification.permission==="granted")new Notification("Time for water 💧",{body:"Take a short water break and keep your plant growing! 🌱"});},Number(minutes)*60000);document.getElementById('reminderStatus').textContent='Reminder set for every '+minutes+' minutes.'}else document.getElementById('reminderStatus').textContent='Reminders are off.'}
-function initReminder(){const v=localStorage.getItem('waterReminder')||'0';document.getElementById('reminderSelect').value=v;if(Number(v)>0)setReminder(v)}
-render();initReminder();
+function requestNotifications(){if(!('Notification'in window)){document.getElementById('reminderStatus').textContent='Notifications are not supported here.';return}Notification.requestPermission().then(p=>{document.getElementById('reminderStatus').textContent=p==='granted'?'Notifications enabled! 💧':'Please allow notifications in your browser.'})}
+let reminderTimer=null;function setReminder(minutes){clearInterval(reminderTimer);localStorage.setItem('waterReminder',minutes);if(Number(minutes)>0){reminderTimer=setInterval(()=>{if('Notification'in window&&Notification.permission==='granted')new Notification('Your garden is thirsty 💧',{body:'Give your plant a little drink and keep growing! 🌱'})},Number(minutes)*60000);document.getElementById('reminderStatus').textContent='Reminder set for every '+minutes+' minutes.'}else document.getElementById('reminderStatus').textContent='Reminders are off.'}
+function initReminder(){const v=localStorage.getItem('waterReminder')||'0';document.getElementById('reminderSelect').value=v;if(Number(v)>0)setReminder(v)}render();initReminder();
 </script>
 </body>
 </html>
