@@ -33,6 +33,17 @@ h1{text-align:center;margin:5px 0 6px;font-size:32px}.subtitle{text-align:center
 <div class="message" id="message">Start your day with a glass of water!</div>
 </div>
 <div class="card">
+<h3>🔔 Water reminders</h3>
+<p style="color:#718595">Get a reminder while the app is open.</p>
+<div class="goal-row">
+<label for="reminderSelect">Every:</label>
+<select id="reminderSelect" class="goal-select" onchange="setReminder(this.value)">
+<option value="0">Off</option><option value="30">30 minutes</option><option value="60">1 hour</option><option value="120">2 hours</option>
+</select>
+</div>
+<button class="reset" onclick="requestNotifications()">Enable notifications</button>
+<div class="message" id="reminderStatus"></div>
+</div>\n<div class="card">
 <div class="stats"><div class="stat"><strong id="percent">0%</strong>Goal reached</div><div class="stat"><strong id="streak">0</strong>Day streak</div></div>
 <div class="history"><h3>Recent days</h3><div id="history"></div></div>
 <button class="reset" onclick="resetToday()">Reset today's water</button>
@@ -58,7 +69,11 @@ document.getElementById('plant').textContent=p<25?'🌱':p<50?'🌿':p<75?'🪴'
 document.getElementById('message').textContent=p>=100?'Daily goal complete! Your plant is thriving! 🌸':p>=75?'Almost there! Keep drinking. 🌳':p>=50?'Great progress! Your plant is growing. 🪴':'Keep going—your plant needs water! 🌱';
 const h=document.getElementById('history');h.innerHTML=data.history.length?data.history.map(x=>'<div class="day"><span>'+x.date+'</span><strong>'+x.amount.toLocaleString()+' mL</strong></div>').join(''):'<div class="day"><span>No previous days yet</span><span>💧</span></div>';
 }
-render();
+function requestNotifications(){if(!("Notification" in window)){document.getElementById('reminderStatus').textContent='Notifications are not supported here.';return}Notification.requestPermission().then(p=>{document.getElementById('reminderStatus').textContent=p==='granted'?'Notifications enabled! 💧':'Please allow notifications in your browser.'})}
+let reminderTimer=null;
+function setReminder(minutes){clearInterval(reminderTimer);localStorage.setItem('waterReminder',minutes);if(Number(minutes)>0){reminderTimer=setInterval(()=>{if("Notification" in window&&Notification.permission==="granted")new Notification("Time for water 💧",{body:"Take a short water break and keep your plant growing! 🌱"});},Number(minutes)*60000);document.getElementById('reminderStatus').textContent='Reminder set for every '+minutes+' minutes.'}else document.getElementById('reminderStatus').textContent='Reminders are off.'}
+function initReminder(){const v=localStorage.getItem('waterReminder')||'0';document.getElementById('reminderSelect').value=v;if(Number(v)>0)setReminder(v)}
+render();initReminder();
 </script>
 </body>
 </html>
