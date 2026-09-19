@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Water Habit 🌱💧</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#e8f8ff,#f4fff1);color:#17324d;min-height:100vh}
+.app{max-width:520px;margin:auto;padding:28px 18px 40px}.card{background:#fff;border-radius:24px;padding:24px;margin-top:18px;box-shadow:0 10px 30px rgba(30,90,120,.12)}
+h1{text-align:center;margin:5px 0 6px;font-size:32px}.subtitle{text-align:center;color:#668096;margin:0 0 18px}
+.plant{font-size:100px;text-align:center;line-height:1.1;transition:.3s}.progress-wrap{height:22px;background:#e8eef2;border-radius:20px;overflow:hidden;margin:15px 0}.progress{height:100%;width:0;background:#43b7e8;border-radius:20px;transition:.4s}
+.amount{text-align:center;font-size:25px;font-weight:bold}.goal{text-align:center;color:#718595;margin-top:5px}
+.buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.buttons button,.custom button{border:0;border-radius:14px;padding:14px;font-size:16px;font-weight:bold;cursor:pointer;background:#e4f7ff;color:#1676a5}.buttons button:hover,.custom button:hover{filter:brightness(.97)}
+.custom{display:flex;gap:10px;margin-top:12px}.custom input{flex:1;padding:13px;border:2px solid #e3ebf0;border-radius:14px;font-size:16px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.stat{text-align:center;background:#f7fbfd;border-radius:16px;padding:15px}.stat strong{display:block;font-size:24px}
+.reset{display:block;margin:18px auto 0;border:0;background:none;color:#8a9aa6;cursor:pointer}.message{text-align:center;margin-top:14px;font-weight:bold;color:#2b829e}
+</style>
+</head>
+<body>
+<div class="app">
+<h1>Water Habit 🌱💧</h1>
+<p class="subtitle">Grow your plant by drinking water.</p>
+<div class="card">
+<div class="plant" id="plant">🌱</div>
+<div class="progress-wrap"><div class="progress" id="progress"></div></div>
+<div class="amount" id="amount">0 mL</div>
+<div class="goal">Daily goal: <span id="goalText">2000</span> mL</div>
+<div class="buttons">
+<button onclick="addWater(250)">+ 250 mL</button>
+<button onclick="addWater(500)">+ 500 mL</button>
+</div>
+<div class="custom">
+<input id="customAmount" type="number" min="1" placeholder="Custom mL">
+<button onclick="addCustom()">Add</button>
+</div>
+<div class="message" id="message">Start your day with a glass of water!</div>
+</div>
+<div class="card">
+<div class="stats">
+<div class="stat"><strong id="percent">0%</strong>Goal reached</div>
+<div class="stat"><strong id="streak">0</strong>Day streak</div>
+</div>
+<button class="reset" onclick="resetToday()">Reset today's water</button>
+</div>
+</div>
+<script>
+const GOAL=2000;
+const key='waterHabitData';
+let data=JSON.parse(localStorage.getItem(key)||'{"date":"","amount":0,"streak":0}');
+
+function today(){return new Date().toISOString().slice(0,10)}
+if(data.date!==today()){data={date:today(),amount:0,streak:data.streak||0};save()}
+function save(){localStorage.setItem(key,JSON.stringify(data))}
+function addWater(ml){
+ if(!Number.isFinite(ml)||ml<=0)return;
+ const wasComplete=data.amount>=GOAL;
+ data.amount+=ml;
+ if(!wasComplete&&data.amount>=GOAL){data.streak+=1}
+ save();render()
+}
+function addCustom(){const v=Number(document.getElementById('customAmount').value);addWater(v);document.getElementById('customAmount').value=''}
+function resetToday(){data.amount=0;save();render()}
+function render(){
+ const p=Math.min(100,data.amount/GOAL*100);
+ document.getElementById('progress').style.width=p+'%';
+ document.getElementById('amount').textContent=data.amount.toLocaleString()+' mL';
+ document.getElementById('percent').textContent=Math.round(p)+'%';
+ document.getElementById('streak').textContent=data.streak;
+ const plant=document.getElementById('plant');
+ plant.textContent=p<25?'🌱':p<50?'🌿':p<75?'🪴':p<100?'🌳':'🌸';
+ document.getElementById('message').textContent=p>=100?'Daily goal complete! Your plant is thriving! 🌸':p>=75?'Almost there! Keep drinking. 🌳':p>=50?'Great progress! Your plant is growing. 🪴':'Keep going—your plant needs water! 🌱';
+}
+render();
+</script>
+</body>
+</html>
